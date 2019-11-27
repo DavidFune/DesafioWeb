@@ -27,7 +27,7 @@ class OrcamentoController extends Controller
      */
     public function index(Request $request)
     {
-        $qtd = $request['qtd'] ?: 2;
+        $qtd = $request['qtd'] ?: 10;
         $page = $request['page'] ?: 1;
         $buscaC = $request['buscarC'];
         $buscaV = $request['buscarV'];

@@ -11,4 +11,5 @@ class Orcamento extends Model
     ];
 
     protected $table = "orcamentos";
+    
 }
