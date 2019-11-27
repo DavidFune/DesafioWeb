@@ -38,29 +38,29 @@ class OrcamentoController extends Controller
         });
 
         if ($data1 && $data2) {
-            $orcamentos = DB::table('orcamentos')->whereBetween('updated_at', [$data1, $data2])->paginate($qtd);
+            $orcamentos = DB::table('orcamentos')->whereBetween('updated_at', [$data1, $data2])->orderBy('updated_at', 'desc')->paginate($qtd);
         }
         elseif ($buscaC && $data1 && $data2 && $buscaV) {
             
             $orcamentos = DB::table('orcamentos')->where('nome', '=', $buscaC,
-            'vendedor','=',$buscaV)->whereBetween('updated_at', [$data1, $data2])->paginate($qtd);
+            'vendedor','=',$buscaV)->whereBetween('updated_at', [$data1, $data2])->orderBy('updated_at', 'desc')->paginate($qtd);
         }
         elseif($buscaC){
-            $orcamentos = DB::table('orcamentos')->where('nome', '=', $buscaC)->paginate($qtd);
+            $orcamentos = DB::table('orcamentos')->where('nome', '=', $buscaC)->orderBy('updated_at', 'desc')->paginate($qtd);
         }
         elseif($buscaV){
-            $orcamentos = DB::table('orcamentos')->where('vendedor', '=', $buscaV)->paginate($qtd);
+            $orcamentos = DB::table('orcamentos')->where('vendedor', '=', $buscaV)->orderBy('updated_at', 'desc')->paginate($qtd);
         }
         else{
             //dd('test');  
-            $orcamentos = DB::table('orcamentos')->paginate($qtd);
+            $orcamentos = DB::table('orcamentos')->orderBy('updated_at', 'desc')->paginate($qtd);
         }
 
         //$orcamentos = DB::table('orcamentos')->paginate($qtd);
         $orcamentos = $orcamentos->appends(Request::capture()->except('page'));
-        return view('orcamentos.index', compact('orcamentos'));
-        
-        $orcamentos = Orcamento::all();
+
+        //$users = DB::table('orcamentos')->orderBy('updated_at')->get();
+
         return view('orcamentos.index', compact('orcamentos'));
     }
 

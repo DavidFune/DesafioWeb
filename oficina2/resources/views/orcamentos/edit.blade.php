@@ -22,9 +22,15 @@
             </div>
             <div class="form-group">
               <label for="valor">Valos</label>
-              <input type="number" min="0" value="0" step="any"
+              <input type="number" min="0" step="any"
               class="form-control"  value="{{$orcamento->valor}}" name="valor">
             </div>
+
+            <div class="form-group">
+              <label for="vendedor">Vendedor</label>
+              <input type="text" class="form-control" value="{{$orcamento->vendedor}}" name="vendedor">
+            </div>
+
             <div class="form-group">
               <label for="descricao">Descrição</label>
               <input type="text" class="form-control" value="{{$orcamento->descricao}}" name="descricao">
