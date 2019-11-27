@@ -22,9 +22,15 @@
             </div>
             <div class="form-group">
               <label for="valor">Valor</label>
-              <input type="number" min="0" value="0" step="any"
+              <input type="number" min="0" step="any"
               class="form-control"  placeholder="R$ 00,00" name="valor">
             </div>
+            <div class="form-group">
+
+                <label for="nome">Vendedor</label>
+                <input type="text" class="form-control" placeholder="Nome do Vendedor" name="vendedor">
+                <small id="vendedor" class="form-text text-muted"></small>
+              </div>
             <div class="form-group">
               <label for="descricao">Descrição</label>
               <input type="text" class="form-control" name="descricao">

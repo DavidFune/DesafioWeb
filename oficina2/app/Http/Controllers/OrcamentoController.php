@@ -13,7 +13,7 @@ class OrcamentoController extends Controller
     protected function validarOrcamento($request){
         $validator = Validator::make($request->all(), [
             "nome"      => "required",
-            //"vendedor"  => "required",
+            "vendedor"  => "required",
             "valor"     => "required | numeric",
             "descricao" => "required"
         ]);
@@ -37,11 +37,13 @@ class OrcamentoController extends Controller
             return $page;
         });
 
-
-        if ($buscaC && $data1 && $data2) {
+        if ($data1 && $data2) {
+            $orcamentos = DB::table('orcamentos')->whereBetween('updated_at', [$data1, $data2])->paginate($qtd);
+        }
+        elseif ($buscaC && $data1 && $data2 && $buscaV) {
             
             $orcamentos = DB::table('orcamentos')->where('nome', '=', $buscaC,
-            )->whereBetween('updated_at', [$data1, $data2])->paginate($qtd);
+            'vendedor','=',$buscaV)->whereBetween('updated_at', [$data1, $data2])->paginate($qtd);
         }
         elseif($buscaC){
             $orcamentos = DB::table('orcamentos')->where('nome', '=', $buscaC)->paginate($qtd);
