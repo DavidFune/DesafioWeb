@@ -21,7 +21,7 @@
               <small id="nome" class="form-text text-muted"></small>
             </div>
             <div class="form-group">
-              <label for="valor">Valos</label>
+              <label for="valor">Valor</label>
               <input type="number" min="0" value="0" step="any"
               class="form-control"  placeholder="R$ 00,00" name="valor">
             </div>

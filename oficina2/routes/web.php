@@ -11,5 +11,6 @@
 |
 */
 
+Route::get('/orcamento/remove/{id}', 'OrcamentoController@remover')->name('orcamento.remove');
+Route::get('/orcamentos/filter', 'OrcamentoController@filter')->name('orcamentos.filter');
 Route::resource('orcamento', 'OrcamentoController');
-Route::get('/orcamento/remove/{$id}', 'OrcamentoController@remover')->name('orcamento.remove');

@@ -2,19 +2,11 @@
 @section('content')
 <div class="panel panel-default">    
         <div class="panel-heading">Lista de Orçamentos</div>
-<form method="GET" action="{{route('orcamento.index','buscar')}}">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Digite o nome do Cliente" name="buscar">
-                <span class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">Pesquisar</button>
-                </span>
-            </div>
-        </div>
-    </div>
-</form>
-        <hr>
+
+        <a href="{{route('orcamentos.filter')}}">
+            <button class="btn btn-primary">Pesquisar</button></a>
+
+<hr>
         <div class="row">
             <div class="col-md-12">
                 <table class="table table-bordered">

@@ -3,15 +3,16 @@
 <div class="panel panel-default">
       <div class="panel-heading">Remover o Orçamento</div>
         <div class="panel-body">
-            <form method="post" action="{{route ('orcamento.destroy', $orcamento->id)}}">
+            <form method="post" action="{{route('orcamento.destroy', $orcamento->id)}}">
                     <input type="hidden" name="_method" value="DELETE">
+                    {{ csrf_field() }}
                 <div class="row">
                     <div class="col-md-12">
                         <h4>Tem certeza que deseja remover o Orcamento?</h4>
                         <hr>
                         <h4>Sobre o Orcamento</h4>
                         <p>Descrição: {{$orcamento->descricao}}</p>
-                        <p>Preço: R$ {{number_format($orcamento->preco, 2, ',', '.')}}</p>
+                        <p>Preço: R$ {{number_format($orcamento->valor, 2, ',', '.')}}</p>
                         <p>Vendedor: {{$orcamento->vendedor}}</p>
                         <hr>
                         <h4>Data</h4>

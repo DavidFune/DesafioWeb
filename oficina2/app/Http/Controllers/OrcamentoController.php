@@ -13,7 +13,7 @@ class OrcamentoController extends Controller
     protected function validarOrcamento($request){
         $validator = Validator::make($request->all(), [
             "nome"      => "required",
-            //"vendedor"  => "required | numeric",
+            //"vendedor"  => "required",
             "valor"     => "required | numeric",
             "descricao" => "required"
         ]);
@@ -29,14 +29,27 @@ class OrcamentoController extends Controller
     {
         $qtd = $request['qtd'] ?: 2;
         $page = $request['page'] ?: 1;
-        $buscar = $request['buscar'];
+        $buscaC = $request['buscarC'];
+        $buscaV = $request['buscarV'];
+        $data1 = $request['data1'];
+        $data2 = $request['data2'];
         Paginator::currentPageResolver(function () use ($page){
             return $page;
         });
 
-        if($buscar){
-            $orcamentos = DB::table('orcamentos')->where('nome', '=', $buscar)->paginate($qtd);
-        }else{
+
+        if ($buscaC && $data1 && $data2) {
+            
+            $orcamentos = DB::table('orcamentos')->where('nome', '=', $buscaC,
+            )->whereBetween('updated_at', [$data1, $data2])->paginate($qtd);
+        }
+        elseif($buscaC){
+            $orcamentos = DB::table('orcamentos')->where('nome', '=', $buscaC)->paginate($qtd);
+        }
+        elseif($buscaV){
+            $orcamentos = DB::table('orcamentos')->where('vendedor', '=', $buscaV)->paginate($qtd);
+        }
+        else{
             //dd('test');  
             $orcamentos = DB::table('orcamentos')->paginate($qtd);
         }
@@ -75,7 +88,7 @@ class OrcamentoController extends Controller
         }
         $dados= $request->all();
         Orcamento::create($dados);
-        return view('shared.base');
+        return redirect()->route('orcamento.index');
     }
 
     /**
@@ -130,13 +143,19 @@ class OrcamentoController extends Controller
     public function destroy($id)
     {
         Orcamento::find($id)->delete();
-        return redirect()->route('orcamentos.index');
+        return redirect()->route('orcamento.index');
     }
 
     public function remover($id)
     {
-        dd('test');
+        
         $orcamento = Orcamento::find($id);
         return view('orcamentos.remove',compact('orcamento'));
+    }
+
+    public function filter()
+    {
+        
+        return view('orcamentos.search');
     }
 }
