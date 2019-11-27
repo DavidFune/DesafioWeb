@@ -36,7 +36,7 @@ $ composer install,
 
  e digite no browser
 
- http://localhost:8000/
+ http://localhost:8000/orcamento
 
  para abrir a pagina inicial da aplicação 
 
