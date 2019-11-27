@@ -20,6 +20,16 @@ $ composer install,
 
  $ php artisan db:seed
 
+ Após esse comando rode
+
+ $ php artisan serve
+
+ e digite no browser
+
+ http://localhost:8000/
+
+ para abrir a pagina inicial da aplicação 
+
 Qualquer dúvida enviar um email para
 
 david.funy28@gmail.com
