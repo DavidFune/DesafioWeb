@@ -1,5 +1,5 @@
 
-“Olá Codificar, temos uma oficina mecânica e diariamente recebemos diversos pedidos de orçamento por telefone e veículos que chegam até nosso estabelecimento, contudo como fazemos por meio de papel, estamos perdendo diversas oportunidades de vendas, pois os papéis se perdem no meio da bagunça da oficina. Gostaríamos de um sistema simples, onde nossos vendedores pudessem cadastrar e consultar os orçamentos.”
+“Olá, temos uma oficina mecânica e diariamente recebemos diversos pedidos de orçamento por telefone e veículos que chegam até nosso estabelecimento, contudo como fazemos por meio de papel, estamos perdendo diversas oportunidades de vendas, pois os papéis se perdem no meio da bagunça da oficina. Gostaríamos de um sistema simples, onde nossos vendedores pudessem cadastrar e consultar os orçamentos.”
 
 
 Essa aplicação está dividida no padrão MVC onde o model tem como nome: Orcamento
